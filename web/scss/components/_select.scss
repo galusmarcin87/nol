@@ -9,6 +9,9 @@
   vertical-align: middle;
   background: $PRIMARY_DARKEN;
 
+  &.whiteBg{
+    background: transparent;
+  }
   &--active {
     .Select-custom__options {
       display: block;

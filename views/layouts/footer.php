@@ -12,63 +12,60 @@ $menu = new NobleMenu(['name' => 'footer_' . Yii::$app->language, 'loginLink' =>
     <i class="fa fa-chevron-up" aria-hidden="true"></i>
 </div>
 
+<section class="Section Newsletter text-center animatedParent">
 
-<footer>
-    <div class="Footer">
-        <div class="container">
-            <div class="animatedParent Footer__top">
-                <div class="fadeIn animated">
-                    <a href="/">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             xml:space="preserve"
-                             version="1.1"
-                             style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-                             viewBox="0 0 8303.83 3232.89"
-                             xmlns:xlink="http://www.w3.org/1999/xlink"
-                             xmlns:xodm="http://www.corel.com/coreldraw/odm/2003" class="Footer__logo">
-                  <use xlink:href="#Warstwa_x0020_1"/>
-                </svg>
-                    </a>
-                </div>
-                <div class="fadeIn animated">
-                    <p class="Footer__text">
-                        <?= MgHelpers::getSettingTranslated('footer - 1', 'footer - 1') ?>
-                    </p>
-                </div>
-                <div class="fadeIn animated">
-                    <p class="Footer__text">
-                        <?= MgHelpers::getSettingTranslated('footer - 2', 'footer - 2') ?>
-                    </p>
-                </div>
-            </div>
-            <div class="animatedParent">
-                <ul class="Footer__menu text-center fadeIn animated">
-                    <? foreach ($menu->getItems() as $item): ?>
-                        <li class="Footer__menu__item">
-                            <? if (isset($item['url'])): ?>
-                                <a href="<?= \yii\helpers\Url::to($item['url']) ?>"
-                                   class="Footer__menu__link <? if (isset($item['active']) && $item['active']): ?>Footer__menu__link--active<? endif ?>"><?= $item['label'] ?></a>
-                            <? endif ?>
-                        </li>
-                    <? endforeach ?>
-                </ul>
-            </div>
-            <div class="animatedParent">
-                <div class="fadeIn animated text-center">
+    <?= $this->render('/common/newsletterForm') ?>
 
-                    <?= MgHelpers::getSetting('footer copyright ' . Yii::$app->language, true, '<p>
-                        &#169; 2020 Riva Finance Crowdsale Platform - tokenizacja nieruchomości | 04-894 Warszawa, ul.
-                        Szachowa 1 
+
+    <footer>
+        <div class="Footer">
+            <div class="container">
+                <div class="animatedParent">
+                    <ul class="Footer__menu text-center fadeIn animated">
+                        <? foreach ($menu->getItems() as $item): ?>
+                            <li class="Footer__menu__item">
+                                <? if (isset($item['url'])): ?>
+                                    <a href="<?= \yii\helpers\Url::to($item['url']) ?>"
+                                       class="Footer__menu__link <? if (isset($item['active']) && $item['active']): ?>Footer__menu__link--active<? endif ?>"><?= $item['label'] ?></a>
+                                <? endif ?>
+                            </li>
+                        <? endforeach ?>
+                    </ul>
+                </div>
+                <div class="Cookies">
+                    <div class="container relative">
+                        <a class="Cookies__close Cookies__close-btn" href="#">
+                            &#215;
+                        </a>
+                        <?= MgHelpers::getSetting('footer cookie ' . Yii::$app->language, true, '<p>
+                            Serwis wykorzystuje pliki cookies. Korzystając ze strony
+                            wyrażasz zgodę na wykorzystywanie plików cookies.
+                            <a class="Cookies__more-btn" href="#">Dowiedz się więcej</a>
                         </p>') ?>
 
-                    <?= MgHelpers::getSetting('footer realisation ' . Yii::$app->language, true, ' <p>
-                        Realizacja <a class="Footer__link" target="_blank" href="https://www.vertesdesign.pl/">Vertes
-                            Desing</a>
-                        </p>') ?>
+                    </div>
+                </div>
+                <div class="animatedParent">
+                    <div class="Footer__copy fadeIn animated">
+                        <div>
+                            <?= MgHelpers::getSetting('footer copyright 1' . Yii::$app->language, true, 'Wszelkie prawa zastrzeżone &#169; 2020 NOL restaurant
+                            &nbsp;|&nbsp;
+                            <a class="Footer__link" href="">Regulamin</a> &nbsp;|&nbsp;
+                            <a class="Footer__link" href="">Polityka&nbsp;prywatności</a>') ?>
 
+                        </div>
+                        <div>
+                            <?= MgHelpers::getSetting('footer copyright 2' . Yii::$app->language, true, 'Realizacja
+                            <a
+                                    class="Footer__link"
+                                    target="_blank"
+                                    href="https://www.vertesdesign.pl/"
+                            >Vertes Desing</a>') ?>
 
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
+</section>

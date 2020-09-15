@@ -2,12 +2,15 @@
 
 use app\components\mgcms\MgHelpers;
 
-
+/* @var $project \app\models\mgcms\db\Project */
+if(!$project->money_full){
+    return false;
+}
 ?>
 <section class="Counter">
     <div class="container">
         <div class="Slider-counter">
-            <div data-date="dec 31, 2020 15:37:25" class="Count-down-timer">
+            <div data-date="<?= $project->date_crowdsale_end ?>" class="Count-down-timer">
                 <div class="Slider-counter__heading"><?= Yii::t('db', 'Left'); ?></div>
                 <div class="Count-down-timer__day"><span></span> <?= Yii::t('db', 'days'); ?></div>
                 <div class="Count-down-timer__hour"><span></span> <?= Yii::t('db', 'hours'); ?></div>
@@ -17,17 +20,17 @@ use app\components\mgcms\MgHelpers;
             <div class="Invest-counter">
                 <div class="Invest-counter__header">
                     <div class="Invest-counter__source">
-                        <span class="Invest-counter__source__value">1 750 000 PLN</span>
-                        (<span data-to="22" class="Invest-counter__source__percent"
+                        <span class="Invest-counter__source__value"><?= $project->money ?> PLN</span>
+                        (<span data-to="<?= round(($project->money / $project->money_full) * 100, 3)?>" class="Invest-counter__source__percent"
                         >0</span
                         >%)
                     </div>
-                    <div class="Invest-counter__target">CEL: 10 000 000 PLN</div>
+                    <div class="Invest-counter__target">CEL: <?= $project->money_full ?> PLN</div>
                 </div>
                 <div class="Invest-counter__value-line-wrapper">
                     <div
-                            data-to="1750000"
-                            data-slide-to="22"
+                            data-to="<?= $project->money ?>"
+                            data-slide-to="<?= round(($project->money / $project->money_full) * 100, 3)?>"
                             class="Invest-counter__value-line"
                             style="width: 0%"
                     ></div>

@@ -2,13 +2,16 @@
 /* @var $this yii\web\View */
 use yii\helpers\Html;
 use app\components\mgcms\MgHelpers;
-
+use app\models\mgcms\db\Project;
+$project = Project::find()
+    ->where(['status' => Project::STATUS_ACTIVE])
+    ->one();
 ?>
 
 
-<?=$this->render('index/slider')?>
+<?=$this->render('index/slider', ['project'=>$project])?>
 
-<?=$this->render('index/counter')?>
+<?=$this->render('index/counter', ['project'=>$project])?>
 
 <?=$this->render('index/section1')?>
 

@@ -939,4 +939,6 @@ class MgHelpers extends \yii\base\Component
 
         return number_format($n);
     }
+
+
 }

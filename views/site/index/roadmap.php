@@ -3,6 +3,11 @@
 use app\models\mgcms\db\Project;
 use app\components\mgcms\MgHelpers;
 
+$category = \app\models\mgcms\db\Category::findOne(['name'=>'roadmap']);
+if(!$category){
+    return false;
+}
+
 
 ?>
 
@@ -74,74 +79,19 @@ use app\components\mgcms\MgHelpers;
             <div class="col-lg-8 col-md-6">
                 <div class="Carousel">
                     <div class="owl-carousel owl-theme animatedParent">
-                        <div class="Projects__card fadeIn animated item">
-                            <div class="Projects__card__header">
-                                <div class="Projects__card__heading">20.08.2020</div>
+                        <?foreach($category->articles as $article):?>
+                            <div class="Projects__card fadeIn animated item">
+                                <div class="Projects__card__header">
+                                    <div class="Projects__card__heading"><?=$article->custom?></div>
+                                </div>
+                                <div class="Projects__card__body">
+                                    <h4><?=$article->title?></h4>
+                                    <p class="Projects__card__text">
+                                        <?=$article->excerpt?>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="Projects__card__body">
-                                <h4>Bilans na kolejny rok inwestycyjny</h4>
-                                <p class="Projects__card__text">
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-                                    aut odit aut fugit, sed quia consequuntur magni dolores
-                                    eos qui ratione voluptatem sequi nesciunt. Neque porro
-                                    quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                    consectetur, adipisci velit, sed quia non numquam eius
-                                    modi tempora incidunt ut labore et dolore magnam aliquam
-                                    quaerat voluptatem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="Projects__card fadeIn animated item">
-                            <div class="Projects__card__header">
-                                <div class="Projects__card__heading">20.08.2020</div>
-                            </div>
-                            <div class="Projects__card__body">
-                                <h4>Bilans na kolejny rok inwestycyjny</h4>
-                                <p class="Projects__card__text">
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-                                    aut odit aut fugit, sed quia consequuntur magni dolores
-                                    eos qui ratione voluptatem sequi nesciunt. Neque porro
-                                    quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                    consectetur, adipisci velit, sed quia non numquam eius
-                                    modi tempora incidunt ut labore et dolore magnam aliquam
-                                    quaerat voluptatem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="Projects__card fadeIn animated item">
-                            <div class="Projects__card__header">
-                                <div class="Projects__card__heading">20.08.2020</div>
-                            </div>
-                            <div class="Projects__card__body">
-                                <h4>Bilans na kolejny rok inwestycyjny</h4>
-                                <p class="Projects__card__text">
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-                                    aut odit aut fugit, sed quia consequuntur magni dolores
-                                    eos qui ratione voluptatem sequi nesciunt. Neque porro
-                                    quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                    consectetur, adipisci velit, sed quia non numquam eius
-                                    modi tempora incidunt ut labore et dolore magnam aliquam
-                                    quaerat voluptatem.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="Projects__card fadeIn animated item">
-                            <div class="Projects__card__header">
-                                <div class="Projects__card__heading">20.08.2020</div>
-                            </div>
-                            <div class="Projects__card__body">
-                                <h4>Bilans na kolejny rok inwestycyjny</h4>
-                                <p class="Projects__card__text">
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-                                    aut odit aut fugit, sed quia consequuntur magni dolores
-                                    eos qui ratione voluptatem sequi nesciunt. Neque porro
-                                    quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                    consectetur, adipisci velit, sed quia non numquam eius
-                                    modi tempora incidunt ut labore et dolore magnam aliquam
-                                    quaerat voluptatem.
-                                </p>
-                            </div>
-                        </div>
+                        <?endforeach;?>
                     </div>
                 </div>
             </div>

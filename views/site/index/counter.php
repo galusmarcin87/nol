@@ -1,6 +1,7 @@
 <?
 
 use app\components\mgcms\MgHelpers;
+use yii\helpers\Url;
 
 /* @var $project \app\models\mgcms\db\Project */
 if(!$project->money_full){
@@ -39,12 +40,14 @@ if(!$project->money_full){
             <div class="Slider-counter__buttons">
                 <div>
                     <a class="btn btn-primary btn-small" href="#"><?= Yii::t('db', 'WHITEPAPER'); ?></a>
-                    <a class="btn btn-primary btn-small" href="#"
+                    <a class="btn btn-primary btn-small" href="<?= $project->linkUrl ?>"
                     ><?= Yii::t('db', 'Details of investition'); ?></a
                     >
                 </div>
                 <div>
-                    <a class="btn btn-primary btn-small" href="#"><?= Yii::t('db', 'Buy tokens'); ?></a>
+                    <a class="btn btn-primary btn-small" href="<?= Url::to(['project/buy', 'id' => $project->id]) ?>">
+                        <?= Yii::t('db', 'Buy tokens'); ?>
+                    </a>
                 </div>
             </div>
         </div>

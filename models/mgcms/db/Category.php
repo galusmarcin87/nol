@@ -24,6 +24,7 @@ use yii\behaviors\SluggableBehavior;
  *
  * @property \app\models\mgcms\db\Category $parent
  * @property \app\models\mgcms\db\Category[] $categories
+ * @property \app\models\mgcms\db\Article[] $articles
  */
 class Category extends BaseCategory
 {

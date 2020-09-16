@@ -69,10 +69,12 @@ use app\components\mgcms\MgHelpers;
                 ],
             ]); ?>
 
-            <?= $form->field6md($model, 'whitepaper')->textInput(['maxlength' => true, 'placeholder' => '']) ?>
+
 
             <?= $form->field6md($model, 'www')->textInput(['maxlength' => true, 'placeholder' => '']) ?>
         </div>
+        <?= $form->field6md($model, 'whitepaper')->textInput(['maxlength' => true, 'placeholder' => '']) ?>
+
         <?= $form->field6md($model, 'money')->textInput(['placeholder' => '']) ?>
 
         <?= $form->field6md($model, 'money_full')->textInput(['placeholder' => '']) ?>

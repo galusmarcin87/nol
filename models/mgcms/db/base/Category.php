@@ -65,6 +65,14 @@ class Category extends \app\models\mgcms\db\AbstractRecord
     {
         return $this->hasMany(\app\models\mgcms\db\Category::className(), ['parent_id' => 'id']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getArticles()
+    {
+        return $this->hasMany(\app\models\mgcms\db\Article::className(), ['category_id' => 'id'])->orderBy('order asc');
+    }
     
 /**
      * @inheritdoc

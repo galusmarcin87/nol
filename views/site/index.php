@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use app\components\mgcms\MgHelpers;
 use app\models\mgcms\db\Project;
+
 $project = Project::find()
     ->where(['status' => Project::STATUS_ACTIVE])
     ->one();
@@ -13,7 +14,7 @@ $project = Project::find()
 
 <?=$this->render('index/counter', ['project'=>$project])?>
 
-<?=$this->render('index/section1')?>
+<?=$this->render('index/section1', ['project'=>$project])?>
 
 <div
     style="background-image: url(/svg/sygnet_gray.svg)"

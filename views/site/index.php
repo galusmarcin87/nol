@@ -23,7 +23,6 @@ $project = Project::find()
 <?=$this->render('index/roadmap')?>
 <?=$this->render('index/movies')?>
 </div>
-<?=$this->render('index/map')?>
 
 <?=$this->render('index/paralax')?>
 

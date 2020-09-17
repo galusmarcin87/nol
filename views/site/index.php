@@ -24,7 +24,7 @@ $project = Project::find()
 <?=$this->render('index/movies')?>
 </div>
 
-<?=$this->render('index/paralax')?>
+<?=$this->render('index/mediaAboutUs')?>
 
 <?=$this->render('/common/news')?>
 

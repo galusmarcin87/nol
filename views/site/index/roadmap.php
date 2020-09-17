@@ -3,7 +3,7 @@
 use app\models\mgcms\db\Project;
 use app\components\mgcms\MgHelpers;
 
-$category = \app\models\mgcms\db\Category::findOne(['name'=>'roadmap']);
+$category = \app\models\mgcms\db\Category::findOne(['name'=>'roadmap '.  Yii::$app->language]);
 if(!$category){
     return false;
 }

@@ -8,20 +8,22 @@ if (MgHelpers::getSetting('home - wspolpracujemy obrazki') == '') {
 
 ?>
 
-<section class="Section Partners animatedParent">
-    <div class="container fadeIn animated">
-        <h4>
-            <?= Yii::t('db', 'We cooperate with'); ?>
-        </h4>
-        <div class="Partners__carousel owl-carousel">
-            <? foreach (MgHelpers::getSettingsArray('home - wspolpracujemy obrazki',false) as $fileUrl): ?>
-                <div class="item Partners__item">
-                    <a class="Partners__item__link" href="#">
-                        <img src="<?=$fileUrl?>"/>
-                    </a>
-                </div>
-            <? endforeach; ?>
+<h3 class="Header-icon">
+    <?= Yii::t('db', 'Partners'); ?>
+    <img class="Header-icon__icon" src="/svg/znaczek.svg" alt="" />
+</h3>
+<div class="Partners__carousel owl-carousel">
 
+    <? foreach (MgHelpers::getSettingsArray('home - wspolpracujemy obrazki',false) as $fileUrl): ?>
+        <div class="item Partners__item">
+            <a class="Partners__item__link" href="#">
+                <img src="<?=$fileUrl?>"/>
+            </a>
         </div>
-    </div>
-</section>
+    <? endforeach; ?>
+
+
+</div>
+<div class="Custom-nav Custom-nav--color-black Partners__nav"></div>
+
+

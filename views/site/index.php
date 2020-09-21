@@ -1,5 +1,6 @@
 <?php
 /* @var $this yii\web\View */
+
 use yii\helpers\Html;
 use app\components\mgcms\MgHelpers;
 use app\models\mgcms\db\Project;
@@ -10,25 +11,29 @@ $project = Project::find()
 ?>
 
 
-<?=$this->render('index/slider', ['project'=>$project])?>
+<?= $this->render('index/slider', ['project' => $project]) ?>
 
-<?=$this->render('index/counter', ['project'=>$project])?>
+<?= $this->render('index/counter', ['project' => $project]) ?>
 
-<?=$this->render('index/section1', ['project'=>$project])?>
+<?= $this->render('index/section1', ['project' => $project]) ?>
 
 <div
-    style="background-image: url(/svg/sygnet_gray.svg)"
-    class="Section--bg-fixed Section--dark"
+        style="background-image: url(/svg/sygnet_gray.svg)"
+        class="Section--bg-fixed Section--dark"
 >
-<?=$this->render('index/roadmap')?>
-<?=$this->render('index/movies')?>
+    <?= $this->render('index/roadmap') ?>
+    <?= $this->render('index/movies') ?>
 </div>
 
-<?=$this->render('index/mediaAboutUs')?>
+<?= $this->render('index/mediaAboutUs') ?>
 
-<?=$this->render('/common/news')?>
+<section class="Section Partners animatedParent">
+    <div class="container fadeIn animated">
+        <?= $this->render('index/creator') ?>
+        <?= $this->render('index/cooperateWith') ?>
+    </div>
+</section>
 
-<?=$this->render('index/cooperateWith')?>
 
-<?=$this->render('/common/faq')?>
+<?= $this->render('/common/faq') ?>
 

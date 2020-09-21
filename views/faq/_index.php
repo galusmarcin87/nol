@@ -2,6 +2,7 @@
 /* @var $model app\models\mgcms\db\FaqItem */
 
 ?>
+
 <div class="Accordion__card fadeIn animated">
     <a
             class="Accordion__card__header collapsed"
@@ -12,15 +13,13 @@
             aria-expanded="true"
             aria-controls="collapseOne"
     >
-        <div>
-            <?= $model->question ?>
-        </div>
+        <div><?= $model->question ?></div>
     </a>
 
     <div
             id="collapse-<?= $model->id ?>"
-            class="Accordion__card__collapse collapse hidden"
-            role="tabpane<?= $model->id ?>"
+            class="Accordion__card__collapse collapse"
+            role="tabpanel"
             aria-labelledby="heading-<?= $model->id ?>"
             data-parent="#accordion"
     >
@@ -29,4 +28,3 @@
         </div>
     </div>
 </div>
-

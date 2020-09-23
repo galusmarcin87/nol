@@ -117,7 +117,7 @@ use yii\bootstrap\Modal;
     </div>
 
 
-    <div class="hidden">
+    <div class="">
         <?=
         $form->field($model, 'type')->dropDownList(app\components\mgcms\MgHelpers::arrayKeyValueFromArray(\app\models\mgcms\db\Article::TYPES, true), ['maxlength' => true, 'placeholder' => 'Type', 'prompt' => ''])
 

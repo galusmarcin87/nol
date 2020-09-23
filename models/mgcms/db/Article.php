@@ -46,8 +46,10 @@ class Article extends \app\models\mgcms\db\AbstractRecord
 {
 
   const TYPE_STANDARD = 'standard';
+  const TYPE_GALLERY = 'gallery';
   const TYPES = [
-      self::TYPE_STANDARD
+      self::TYPE_STANDARD,
+      self::TYPE_GALLERY
   ];
   const STATUS_ACTIVE = 'active';
   const STATUS_DRAFT = 'draft';

@@ -17,7 +17,7 @@ $arr = [
     'Buy Token Info' => 'Informacja podczas kupowania',
     'verified' => 'zweryfikowany',
     'Token currency' => 'Waluta tokenu',
-
+    'gallery'=>'galeria',
 
 
 

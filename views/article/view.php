@@ -7,7 +7,6 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => \yii\helpers\Url::canoni
 
 ?>
 
-<?= $this->render('/common/breadcrumps') ?>
 
 
 <section class="Section Text">
@@ -21,7 +20,5 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => \yii\helpers\Url::canoni
     </div>
 </section>
 
-
-<?= $this->render('/common/news') ?>
 
 <?= $this->render('/common/newsletterForm') ?>

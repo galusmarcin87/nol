@@ -9,7 +9,7 @@ use app\models\mgcms\db\Setting;
  * Helpers class
  * @author marcin
  */
-class CrowdsaleHelper extends \yii\base\Component
+class ProjectHelper extends \yii\base\Component
 {
 
     static function getFormFieldConfig($withPlaceholders = true)
@@ -17,7 +17,7 @@ class CrowdsaleHelper extends \yii\base\Component
         if ($withPlaceholders) {
             return [
                 'options' => [
-                    'class' => "Form__label",
+                    'class' => "Contact-form__label",
                 ],
                 'template' => "{input}\n{label}\n{error}",
                 'inputOptions' => ['class' => 'Form__input Register__input form-control'],
@@ -30,16 +30,19 @@ class CrowdsaleHelper extends \yii\base\Component
             ];
         } else {
             return [
+
                 'options' => [
-                    'class' => "Form__label",
+                    'class' => "Contact-form__label",
+                    'tag' => 'label',
                 ],
-                'template' => "{beginLabel}{labelTitle}{input}\n\n{error}{endLabel}",
-                'inputOptions' => ['class' => 'Form__input Register__input form-control'],
+                'template' => "{beginWrapper}{labelTitle}{input}\n\n{error}{endWrapper}",
+                'inputOptions' => ['class' => 'Contact-form__input form-control'],
                 'labelOptions' => [
-                    'class' => "Form__label",
+                    'class' => "Contact-form__label",
                 ],
                 'wrapperOptions' => [
-                    'class' => "Form__group  form-group",
+                    'class' => "Contact-form__label",
+
                 ]
             ];
         }

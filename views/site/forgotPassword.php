@@ -19,7 +19,7 @@ $this->title = Yii::t('db', 'Forgotten password');
                 <?php
                 $form = ActiveForm::begin([
                     'id' => 'login-form',
-                    'fieldConfig' => \app\components\CrowdsaleHelper::getFormFieldConfig()
+                    'fieldConfig' => \app\components\ProjectHelper::getFormFieldConfig()
                 ]);
 
                 //          echo $form->errorSummary($model);

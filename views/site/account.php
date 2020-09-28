@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         $form = ActiveForm::begin([
             'id' => 'login-form',
 
-            'fieldConfig' => \app\components\CrowdsaleHelper::getFormFieldConfig(false),
+            'fieldConfig' => \app\components\ProjectHelper::getFormFieldConfig(false),
             'options' => ['enctype' => 'multipart/form-data', 'class' => 'User-Panel__form animatedParent',]
         ]);
 

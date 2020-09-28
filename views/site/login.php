@@ -10,7 +10,7 @@ use app\components\mgcms\MgHelpers;
 
 $this->title = Yii::t('db', 'Log in');
 $this->params['breadcrumbs'][] = $this->title;
-$fieldConfig = \app\components\CrowdsaleHelper::getFormFieldConfig()
+$fieldConfig = \app\components\ProjectHelper::getFormFieldConfig()
 
 ?>
 

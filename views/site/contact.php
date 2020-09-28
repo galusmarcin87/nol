@@ -1,5 +1,6 @@
 <?php
 /* @var $this yii\web\View */
+/* @var $model \app\models\ContactForm */
 
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
@@ -9,113 +10,98 @@ $this->title = MgHelpers::getSettingTranslated('contact_header', 'Contact');
 
 
 ?>
-<?= $this->render('/common/breadcrumps') ?>
 
-    <section class="Section User-panel animatedParent">
-        <div class="container fadeIn animated">
-            <h2>
-                <?= Yii::t('db', 'Contact us'); ?>
-            </h2>
-            <div class="Contact-form">
-                <div class="User-Panel__form User-Panel__form--block">
-                    <div>
-                        <?php
-                        $form = ActiveForm::begin([
-                            'id' => 'login-form',
-                            'fieldConfig' => \app\components\CrowdsaleHelper::getFormFieldConfig()
-                        ]);
 
-                        echo $form->errorSummary($model);
-                        ?>
-                        <div class="User-Panel__form-group">
-                            <?= $form->field($model, 'name')->textInput(['placeholder' => ' ']) ?>
-                            <?= $form->field($model, 'email')->textInput(['placeholder' => ' ']) ?>
-                            <?= $form->field($model, 'phone')->textInput(['placeholder' => ' ']) ?>
-                        </div>
-                        <div class="User-Panel__form-group User-Panel__form-group--block">
-                            <?= $form->field($model, 'body')->textarea(['placeholder' => ' ']) ?>
-                        </div>
-                    </div>
-                    <?= $form->field($model, 'acceptTerms',
-                        [
-                            'options' => [
-                                'class' => "Form__group form-group text-left",
-                            ],
-                            'checkboxTemplate' => "{input}\n{label}\n{error}",
-                        ]
-                    )->checkbox(['class' => 'Form__checkbox']) ?>
+<section class="Section Section--big-padding-top Contact animatedParent">
+    <div class="container fadeIn animated">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="Contact__header text-left">
+                    <?= MgHelpers::getSetting('contact_address', false, 'NOL Group Sp. z o.o. <br />
+                    ul. 55 Pułku Piechoty 33/7, 64-100 Leszno') ?>
 
-                    <?= $form->field($model, 'acceptTerms2',
-                        [
-                            'options' => [
-                                'class' => "Form__group form-group text-left",
-                            ],
-                            'checkboxTemplate' => "{input}\n{label}\n{error}",
-                        ]
-                    )->checkbox(['class' => 'Form__checkbox']) ?>
-                    <div class="text-right">
-                        <input
-                                style="margin-top: 0;"
-                                type="submit"
-                                class="btn btn-success btn-success--line-bottom"
-                                value="<?= Yii::t('db', 'Send message'); ?>"
+                </h3>
+            </div>
+            <div class="col-lg-6">
+                <div class="buttons-list buttons-list--two">
+                    <a
+                            class="btn btn-small btn-primary--reverse"
+                            href="phone:<?= MgHelpers::getSetting('contact_phone', false, '+48 784 112 895') ?>"
+                    >
+                        <img
+                                class="buttons-list__icon"
+                                src="/svg/telefon.svg"
+                                alt=""
                         />
-                    </div>
-                    <?php ActiveForm::end(); ?>
-                </div>
-                <div class="Contact__block">
-                    <h6>RIVA FINANCE</h6>
-                    <p>
-
-                        <?= MgHelpers::getSetting('contact_address', false, '<b>Crowdsale Platform</b><br>
-                        ul. Szachowa 1/854<br>
-                        04-894 Warszawa') ?>
-
-                    </p>
-                    <p>
-                        <strong>
-                            <small>
-                                <?= Yii::t('db', 'Office contact details'); ?>
-                            </small>
-                        </strong>
-                        <br>
-                        <?= MgHelpers::getSetting('contact_address_office', false, '<a href="tel:+48502148957">+48 502 148 957</a>
-                        <br>
-                        <a href="mailto:info@rivafinanced.com"></a>info@rivafinanced.com</a>') ?>
-
-                    </p>
-                    <p>
-                        <strong>
-                            <small>
-                                <?= Yii::t('db', 'Media'); ?>
-                            </small>
-                        </strong>
-                        <br>
-                        <?= MgHelpers::getSetting('contact_address_media', false, '<a href="tel:+48502148957">+48 502 148 957</a>
-                        <br>
-                        <a href="mailto:media@rivafinanced.com"></a>media@rivafinanced.com</a>') ?>
-
-                    </p>
-                    <p>
-                        <strong>
-                            <small>
-                                <?= Yii::t('db', 'Cooperation'); ?>
-                            </small>
-                        </strong>
-                        <br>
-                        <?= MgHelpers::getSetting('contact_address_cooperation', false, '<a href="mailto:media@rivafinanced.com"></a>media@rivafinanced.com</a>') ?>
-
-                    </p>
+                        <?= MgHelpers::getSetting('contact_phone', false, '+48 784 112 895') ?></a
+                    >
+                    <a
+                            class="btn btn-small btn-primary--reverse"
+                            href="mailto:<?= MgHelpers::getSetting('contact_email', false, 'info@nolgroup.pl') ?>"
+                    >
+                        <img class="buttons-list__icon" src="/svg/email.svg" alt="" />
+                        <?= MgHelpers::getSetting('contact_email', false, 'info@nolgroup.pl') ?></a
+                    >
                 </div>
             </div>
         </div>
-        </div>
-    </section>
+        <div class="row">
+            <div class="col-lg-6 Contact__map-wrapper">
+                <div id="map" class="Contact__map fadeIn animated"></div>
+                <a
+                        href="#"
+                        type="submit"
+                        class="Contact-form__submit Contact__map__btn btn btn-primary"
+                >
+                    <?= Yii::t('db', 'check how to get there'); ?>
+                </a>
+            </div>
+            <div class="col-lg-6">
+                <div class="Contact-form">
+                    <?php
+                    $form = ActiveForm::begin([
+                        'id' => 'login-form',
+                        'fieldConfig' => \app\components\ProjectHelper::getFormFieldConfig(false)
+                    ]);
 
-    <section>
-        <div class="animatedParent">
-            <div id="map" class="Contact__map fadeIn animated"></div>
+//                    echo $form->errorSummary($model);
+                    ?>
+                        <div class="Contact-form__form-group form-group">
+                            <?= $form->field($model, 'name')->textInput(['placeholder' => ' ']) ?>
+                            <?= $form->field($model, 'email')->textInput(['placeholder' => ' ']) ?>
+                        </div>
+                        <div class="Contact-form__form-group form-group">
+                            <?= $form->field($model, 'phone')->textInput(['placeholder' => ' ']) ?>
+                            <?= $form->field($model, 'subject')->textInput(['placeholder' => ' ']) ?>
+                        </div>
+                        <div class="Contact-form__form-group form-group">
+                            <?= $form->field($model, 'body')->textarea(['placeholder' => ' ']) ?>
+                        </div>
+                        <div class="Form__group form-group text-left">
+                            <?= $form->field($model, 'acceptTerms',
+                                [
+                                    'options' => [
+                                        'class' => "Form__group form-group text-left",
+                                    ],
+                                    'checkboxTemplate' => "{input}\n{label}\n{error}",
+                                ]
+                            )->checkbox(['class' => 'Form__checkbox']) ?>
+                        </div>
+                        <div class="text-right">
+                            <button
+                                    type="submit"
+                                    class="Contact-form__submit btn btn-primary"
+                            >
+                                <?= Yii::t('db', 'Send message'); ?>
+                            </button>
+                        </div>
+                    <?php ActiveForm::end(); ?>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
+
+
 
 <?= $this->render('contact/script') ?>

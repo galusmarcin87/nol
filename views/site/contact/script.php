@@ -24,8 +24,7 @@ use app\components\mgcms\MgHelpers;
         var marker = new google.maps.Marker({
             map: map,
             position: myLatLng,
-            title: "",
-            icon: "images/marker_03.png"
+            title: ""
         });
     }
 </script>

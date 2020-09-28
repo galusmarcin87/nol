@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 $form = ActiveForm::begin([
                     'id' => 'login-form',
                     'class' => 'fadeInUpShort animated delay-250',
-                    'fieldConfig' => \app\components\CrowdsaleHelper::getFormFieldConfig()
+                    'fieldConfig' => \app\components\ProjectHelper::getFormFieldConfig()
                 ]);
 
                 //          echo $form->errorSummary($model);

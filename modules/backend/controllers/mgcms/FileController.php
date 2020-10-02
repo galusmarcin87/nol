@@ -161,6 +161,13 @@ class FileController extends MgBackendController
     $name = uniqid() . $file->name;
     $path = \app\components\mgcms\MgHelpers::getWebRoot() . '/storage/files/' . $name;
 
+    if(!is_dir(\app\components\mgcms\MgHelpers::getWebRoot() . '/storage/files/')){
+        if (!mkdir($concurrentDirectory = \app\components\mgcms\MgHelpers::getWebRoot() . '/storage/files/') && !is_dir($concurrentDirectory)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
+        }
+    }
+
+
     if ($file->saveAs($path)) {
       return \yii\helpers\Json::encode(['location' => \app\components\mgcms\MgHelpers::createUrl(['/storage/files/' . $name])]);
     } else {

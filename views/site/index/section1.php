@@ -34,7 +34,7 @@ use yii\web\View;
                 <div class="row">
                     <div class="col-md-6">
                         <h3 class="Section__header-icon">
-                            <?= $this->render('_svg1') ?>
+                            <?= $this->render('/common/svg/comet') ?>
                             <?= MgHelpers::getSettingTypeText('Home section 1 - 2 title ' . Yii::$app->language, false, 'Innowacyjna Restauracja') ?>
 
                         </h3>
@@ -52,7 +52,7 @@ use yii\web\View;
                     </div>
                     <div class="col-md-6">
                         <h3 class="Section__header-icon">
-                            <?= $this->render('_svg2') ?>
+                            <?= $this->render('/common/svg/telescope') ?>
                             <?= MgHelpers::getSettingTypeText('Home section 1 - 3 title ' . Yii::$app->language, false, 'Edukacja-<br/>rozrywka') ?>
 
                         </h3>

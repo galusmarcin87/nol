@@ -280,5 +280,3 @@ $article = \app\models\mgcms\db\Article::findOne(['language' => Yii::$app->langu
             <?= $article->content ?>
         </div>
     </section>
-
-<?= $this->render('/common/newsletterForm') ?>

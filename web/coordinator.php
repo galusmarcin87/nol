@@ -3,9 +3,11 @@
 
 if($_COOKIE['userToken'] == '12345'){
     setcookie('userLoggedIn', 1);
+    header('userLoggedIn: 1');
 }
 
 if($_COOKIE['userToken'] == '67890'){
     setcookie('userLoggedIn', 0);
+    header('userLoggedIn: 0');
 }
 

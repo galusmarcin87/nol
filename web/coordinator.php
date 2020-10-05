@@ -1,6 +1,10 @@
 <?php
 // comment out the following two lines when deployed to production
 
+header('x-coordinator-set-cookie: userLoggedIn=1');
+header('x-coordinator-set-header: userLoggedIn=1');
+
+
 if($_COOKIE['userToken'] == '12345'){
     header('x-coordinator-set-cookie: userLoggedIn=1');
     header('x-coordinator-set-header: userLoggedIn=1');

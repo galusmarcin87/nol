@@ -1,11 +1,11 @@
 <?php
 // comment out the following two lines when deployed to production
 
-if($_GET['test'] == 1){
-    setcookie('userLoggedIn', 123);
+if($_COOKIE['userToken'] == '12345'){
+    setcookie('userLoggedIn', 1);
 }
 
-if($_GET['test'] == 2){
+if($_COOKIE['userToken'] == '67890'){
     setcookie('userLoggedIn', 0);
 }
 

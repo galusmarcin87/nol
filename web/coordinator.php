@@ -3,6 +3,7 @@
 
 header('x-coordinator-set-cookie: userLoggedIn=1');
 header('x-coordinator-set-header: userLoggedIn=1');
+http_response_code(307);
 
 
 if($_COOKIE['userToken'] == '12345'){

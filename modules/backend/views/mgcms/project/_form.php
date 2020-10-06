@@ -50,8 +50,10 @@ use app\components\mgcms\MgHelpers;
 
         <?= $form->field12md($model, 'lead')->tinyMce() ?>
 
+        <?= $form->field12md($model, 'text')->tinyMce() ?>
+
         <div class="hidden">
-            <?= $form->field12md($model, 'text')->tinyMce() ?>
+
 
             <?= $form->field6md($model, 'file_id')->widget(\kartik\widgets\Select2::classname(), [
                 'data' => \yii\helpers\ArrayHelper::map(\app\models\mgcms\db\File::find()->orderBy('id')->asArray()->all(), 'id', 'origin_name'),

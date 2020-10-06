@@ -32,7 +32,7 @@ $index=0;
                                     <?= $project->lead ?>
                                 </div>
                                 <a class="btn btn-primary btn-small"
-                                   href="<?= $project->linkUrl ?>"><?= Yii::t('db', 'More about project'); ?>
+                                   href="<?= \yii\helpers\Url::to(['site/about-project']) ?>"><?= Yii::t('db', 'More about project'); ?>
                                 </a>
                                 <div class="owl-dots">
                                     <? for ($i = 1; $i <= sizeof($project->files); $i++): ?>

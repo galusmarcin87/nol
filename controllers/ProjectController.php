@@ -121,7 +121,16 @@ class ProjectController extends \app\components\mgcms\MgCmsController
         }
 
         $output['income'] = $capital + ($capital * (intval(($_POST['percentage'])) / 100 * $_POST['investition_time']));
-       
+
         return json_encode($output);
+    }
+
+    public function actionTokenomia()
+    {
+        $project = Project::find()
+            ->where(['status' => Project::STATUS_ACTIVE])
+            ->one();
+
+        return $this->render('view', ['model' => $project]);
     }
 }

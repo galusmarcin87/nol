@@ -16,6 +16,7 @@ use app\components\mgcms\MgHelpers;
  * @property string $gps_long
  * @property string $lead
  * @property string $text
+ * @property string $text2
  * @property integer $file_id
  * @property integer $flag_id
  * @property string $whitepaper
@@ -47,7 +48,7 @@ class Project extends \app\models\mgcms\db\AbstractRecord
 {
     use LanguageBehaviorTrait;
 
-    public $languageAttributes = ['name', 'lead', 'text', 'buy_token_info'];
+    public $languageAttributes = ['name', 'lead', 'text','text2', 'buy_token_info'];
 
     const STATUS_ACTIVE = 1;
     const STATUS_ENDED = 2;
@@ -63,7 +64,7 @@ class Project extends \app\models\mgcms\db\AbstractRecord
         return [
             [['name', 'file_id'], 'required'],
             [['gps_lat', 'gps_long', 'money', 'money_full'], 'number'],
-            [['lead', 'text', 'buy_token_info'], 'string'],
+            [['lead', 'text','text2', 'buy_token_info'], 'string'],
             [['file_id', 'percentage', 'percentage_presale_bonus', 'token_value', 'token_to_sale', 'token_minimal_buy', 'token_left', 'flag_id'], 'integer'],
             [['date_presale_start', 'date_presale_end', 'date_crowdsale_start', 'date_crowdsale_end', 'date_realization_profit'], 'safe'],
             [['name', 'localization', 'whitepaper', 'www', 'token_blockchain'], 'string', 'max' => 245],
@@ -93,6 +94,7 @@ class Project extends \app\models\mgcms\db\AbstractRecord
             'gps_long' => Yii::t('app', 'Gps Long'),
             'lead' => Yii::t('app', 'Lead'),
             'text' => Yii::t('app', 'Text'),
+            'text' => Yii::t('app', 'Text2'),
             'file_id' => Yii::t('app', 'File'),
             'flag_id' => Yii::t('app', 'Flaga'),
             'whitepaper' => Yii::t('app', 'Whitepaper'),

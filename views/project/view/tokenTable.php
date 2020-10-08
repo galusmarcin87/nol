@@ -7,36 +7,32 @@ use yii\web\View;
 /* @var $model Project */
 
 ?>
-<div class="Card-horizontal__list">
-    <div class="Card-horizontal__list__item">
-        <?= Yii::t('db', 'Value'); ?>
-        <div class="pull-right">
-            <b><?= $model->token_value ?> <?= $model->token_currency ?></b>
-        </div>
-    </div>
-    <div class="Card-horizontal__list__item">
-        Blockchain:
-        <?= Yii::t('db', 'Blockchain'); ?>
-        <div class="pull-right">
-            <b><?= $model->token_blockchain ?></b>
-        </div>
-    </div>
-    <div class="Card-horizontal__list__item">
-        <?= Yii::t('db', 'Intended for sale'); ?>:
-        <div class="pull-right">
-            <b>$<?= $model->token_to_sale ?></b>
-        </div>
-    </div>
-    <div class="Card-horizontal__list__item">
-        <?= Yii::t('db', 'Minimal purchase'); ?>:
-        <div class="pull-right">
-            <b>$<?= $model->token_minimal_buy ?></b>
-        </div>
-    </div>
-    <div class="Card-horizontal__list__item">
-        <?= Yii::t('db', 'Left'); ?>:
-        <div class="pull-right">
-            <b>$<?= $model->token_left ?></b>
-        </div>
-    </div>
-</div>
+
+<ul class="List-custom__two">
+    <li class="List-custom__two__item">
+                  <span>
+                    <strong> <span><?= Yii::t('db', 'Token'); ?></span></strong>
+                  </span>
+        <div></div>
+    </li>
+    <li class="List-custom__two__item">
+        <span> <?= Yii::t('db', 'Value'); ?>: </span>
+        <span> <?= $model->token_value ?> </span>
+    </li>
+    <li class="List-custom__two__item">
+        <span> <?= Yii::t('db', 'Blockchain'); ?>: </span>
+        <span> <?= $model->token_blockchain ?> </span>
+    </li>
+    <li class="List-custom__two__item">
+        <span> <?= Yii::t('db', 'Intended for sale'); ?>: </span>
+        <span> $<?= $model->token_to_sale ?> </span>
+    </li>
+    <li class="List-custom__two__item">
+        <span> <?= Yii::t('db', 'Minimal purchase'); ?>: </span>
+        <span> $<?= $model->token_minimal_buy ?> </span>
+    </li>
+    <li class="List-custom__two__item">
+        <span> <?= Yii::t('db', 'Left'); ?> </span>
+        <span> $<?= $model->token_left ?> </span>
+    </li>
+</ul>

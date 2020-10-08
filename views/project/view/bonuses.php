@@ -8,13 +8,17 @@ use yii\web\View;
 
 ?>
 
-<div class="Card-horizontal__list">
+<ul class="List-custom__two">
+    <li class="List-custom__two__item">
+                  <span>
+                    <strong> <span><?= Yii::t('db', 'Bonus'); ?></span></strong>
+                  </span>
+        <div></div>
+    </li>
     <? foreach ($model->bonuses as $bonus): ?>
-        <div class="Card-horizontal__list__item">
-            <?= $bonus->from ?>-<?= $bonus->to ?> <?= Yii::t('db', 'tokens'); ?>
-            <div class="pull-right">
-                <b>$<?= $bonus->value ?></b>
-            </div>
-        </div>
+        <li class="List-custom__two__item">
+            <span> <?= $bonus->from ?>-<?= $bonus->to ?> <?= Yii::t('db', 'tokens'); ?>: </span>
+            <span> $<?= $bonus->value ?> </span>
+        </li>
     <? endforeach; ?>
-</div>
+</ul>

@@ -10,6 +10,15 @@ use yii\web\View;
 
     <ul class="List-custom__two">
         <li class="List-custom__two__item">
+                  <span>
+                    <strong><?= Yii::t('db', 'Investition'); ?>: <span><?=$model->investition_time?></span></strong>
+                  </span>
+            <span>
+                    <strong> <?= Yii::t('db', 'Offered'); ?>: <span><?=$model->percentage?>%</span> </strong>
+                  </span>
+        </li>
+
+        <li class="List-custom__two__item">
                 <span>
                    <?= Yii::t('db', 'Localization'); ?>:
             </span>

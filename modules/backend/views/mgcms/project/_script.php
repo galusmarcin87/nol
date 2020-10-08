@@ -6,6 +6,7 @@ use yii\helpers\Url;
     function addRow<?= $class ?>() {
         var data = $('#add-<?= $relID?> :input').serializeArray();
         data.push({name: '_action', value : 'add'});
+        data.push({name: '_csrf', 'value': yii.getCsrfToken()})
         $.ajax({
             type: 'POST',
             url: '<?php echo Url::to(['add-'.$relID]); ?>',

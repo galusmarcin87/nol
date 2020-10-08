@@ -98,6 +98,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ['class' => 'yii\grid\SerialColumn'],
                 'id',
                 'from',
+                'to',
                 'value',
             ];
             echo Gridview::widget([
@@ -106,7 +107,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-bonus']],
                 'panel' => [
                     'type' => GridView::TYPE_PRIMARY,
-                    'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode(Yii::t('app', 'Właściwosci')),
+                    'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode(Yii::t('app', 'Bonuses')),
                 ],
                 'columns' => $gridColumnBonus
             ]);

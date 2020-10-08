@@ -94,7 +94,7 @@ class Project extends \app\models\mgcms\db\AbstractRecord
             'gps_long' => Yii::t('app', 'Gps Long'),
             'lead' => Yii::t('app', 'Lead'),
             'text' => Yii::t('app', 'Text'),
-            'text' => Yii::t('app', 'Text2'),
+            'text2' => Yii::t('app', 'Text2'),
             'file_id' => Yii::t('app', 'File'),
             'flag_id' => Yii::t('app', 'Flaga'),
             'whitepaper' => Yii::t('app', 'Whitepaper'),

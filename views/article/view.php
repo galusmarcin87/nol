@@ -9,7 +9,7 @@ $this->registerLinkTag(['rel' => 'canonical', 'href' => \yii\helpers\Url::canoni
 
 
 
-<section class="Section Text">
+<section class="Section Text Section--big-padding-top ">
     <div class="container">
         <? if ($model->file && $model->file->isImage()): ?>
           <div class="Image-singe-container">

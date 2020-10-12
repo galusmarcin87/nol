@@ -196,23 +196,6 @@ class SiteController extends \app\components\mgcms\MgCmsController
         }
 
 
-
-        /* @var $mailer \yii\swiftmailer\Mailer */
-        $mailer = Yii::$app->mailer->compose('activation', [
-            'model' => User::find()->one()
-        ])
-            ->setTo('galusmarcin87@gmail.com')
-            ->setFrom([MgHelpers::getSetting('register_email') => MgHelpers::getSetting('register_email_name')])
-            ->setSubject(MgHelpers::getSettingTranslated('register_activation_email_subject', 'Noble Platform - activation'));
-        $sent = $mailer->send();
-
-        if (!$sent) {
-            $mailer->getLogger()->dump();
-            MgHelpers::setFlashError(Yii::t('db', 'Error during sending activation email'));
-        } else {
-            MgHelpers::setFlashSuccess(Yii::t('db', 'Account successfully created, check your email for activation link'));
-        }
-
         $model = new LoginForm();
         $modelRegister = new RegisterForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {

@@ -56,27 +56,27 @@ $menu = new NobleMenu(['name' => 'header_' . Yii::$app->language, 'loginLink' =>
                     </div>
                 </div>
                 <? if (MgHelpers::getSetting('facebook url')): ?>
-                    <a  href="<?= MgHelpers::getSetting('facebook url') ?>">
+                    <a  href="<?= MgHelpers::getSetting('facebook url') ?>" target="_blank">
                         <i class="Menu-top__icon fa fa-facebook" aria-hidden="true"></i>
                     </a>
                 <? endif ?>
                 <? if (MgHelpers::getSetting('youtube url')): ?>
-                    <a  href="<?= MgHelpers::getSetting('youtube url') ?>">
+                    <a  href="<?= MgHelpers::getSetting('youtube url') ?>" target="_blank">
                         <i class="Menu-top__icon fa fa-youtube" aria-hidden="true"></i>
                     </a>
                 <? endif ?>
                 <? if (MgHelpers::getSetting('twitter url')): ?>
-                    <a href="<?= MgHelpers::getSetting('twitter url') ?>">
+                    <a href="<?= MgHelpers::getSetting('twitter url') ?>" target="_blank">
                         <i class="Menu-top__icon fa fa-twitter" aria-hidden="true"></i>
                     </a>
                 <? endif ?>
                 <? if (MgHelpers::getSetting('linkedin url')): ?>
-                    <a href="<?= MgHelpers::getSetting('linkedin url') ?>">
+                    <a href="<?= MgHelpers::getSetting('linkedin url') ?>" target="_blank">
                         <i class="Menu-top__icon fa fa-linkedin" aria-hidden="true"></i>
                     </a>
                 <? endif ?>
                 <? if (MgHelpers::getSetting('instagram url')): ?>
-                    <a href="<?= MgHelpers::getSetting('instagram url') ?>">
+                    <a href="<?= MgHelpers::getSetting('instagram url') ?>" target="_blank">
                         <i class="Menu-top__icon fa fa-instagram" aria-hidden="true"></i>
                     </a>
                 <? endif ?>

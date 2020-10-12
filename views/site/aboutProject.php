@@ -264,7 +264,7 @@ $article = \app\models\mgcms\db\Article::findOne(['language' => Yii::$app->langu
                                         />
                                     </svg>
 
-                                    <?= MgHelpers::getSetting('home - tworca linkedin', false, 'https://linkedin.pl/nolrestaurant') ?></a
+                                    <?= MgHelpers::getSetting('home - tworca linkedin label', false, 'linkedin.pl/nolrestaurant') ?></a
                                 >
                             </div>
                         </div>

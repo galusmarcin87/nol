@@ -23,7 +23,7 @@
             aria-labelledby="heading-<?= $model->id ?>"
             data-parent="#accordion"
     >
-        <div class="Accordion__card__body">
+        <div class="Accordion__card__body" style="display: none">
             <?= $model->answer ?>
         </div>
     </div>

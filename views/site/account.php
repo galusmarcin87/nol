@@ -15,9 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<?= $this->render('/common/breadcrumps') ?>
 
-<section class="Section User-panel">
+<section class="Section Section--big-padding-top Contact animatedParent">
     <div class="container">
         <div class="Projects__filter text-center" style="display: none">
             <a href="#" class="btn btn-primary">MOJE DANE</a>
@@ -30,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id' => 'login-form',
 
             'fieldConfig' => \app\components\ProjectHelper::getFormFieldConfig(false),
-            'options' => ['enctype' => 'multipart/form-data', 'class' => 'User-Panel__form animatedParent',]
+            'options' => ['enctype' => 'multipart/form-data', 'class' => 'User-Panel__form Contact-form animatedParent',]
         ]);
 
         //          echo $form->errorSummary($model);
@@ -66,14 +65,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'acceptTerms')->checkbox() ?>
             </div>
             <input
-                    class="btn btn-success btn-block"
+                    class="btn btn-primary"
                     type="submit"
                     value="<?= Yii::t('db', 'SAVE CHANGES'); ?>"
             />
 
         </div>
         <div class="fadeIn animated">
-            <div class="User-Panel_profile">
+            <div class="User-Panel_profile"  style="display: none">
                 <label class="User-Panel__label">
                     <?= Yii::t('db', 'YOUR PROFILE PHOTO'); ?>
                 </label>
@@ -117,7 +116,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= $form->field($model, 'passwordRepeat', ['options' => ['class' => $fieldClass]])->passwordInput(['placeholder' => ' ']) ?>
                     <input
                             type="submit"
-                            class="btn btn-success btn-block"
+                            class="btn btn-primary"
                             name="passwordChanging"
                             value="<?= Yii::t('db', 'SAVE CHANGES'); ?>"
                     />

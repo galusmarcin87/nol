@@ -21,7 +21,7 @@ $fieldConfig = \app\components\ProjectHelper::getFormFieldConfig(false)
 
 <section class="Section Section--big-padding-top Contact">
     <div class="container">
-        <?= yii\authclient\widgets\AuthChoice::widget([
+        <? yii\authclient\widgets\AuthChoice::widget([
             'baseAuthUrl' => ['site/auth'],
             'popupMode' => false,
         ]) ?>

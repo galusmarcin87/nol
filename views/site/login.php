@@ -7,15 +7,24 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use app\components\mgcms\MgHelpers;
+use yii\authclient\widgets\AuthChoice;
+
 
 $this->title = Yii::t('db', 'Log in');
 $this->params['breadcrumbs'][] = $this->title;
 $fieldConfig = \app\components\ProjectHelper::getFormFieldConfig(false)
 
+
 ?>
+
+
 
 <section class="Section Section--big-padding-top Contact">
     <div class="container">
+        <?= yii\authclient\widgets\AuthChoice::widget([
+            'baseAuthUrl' => ['site/auth'],
+            'popupMode' => false,
+        ]) ?>
         <div class="Contact__grid">
             <div class="Contact-form">
                 <?php

@@ -483,4 +483,13 @@ return array (
       '@kartik/popover' => $vendorDir . '/kartik-v/yii2-popover-x/src',
     ),
   ),
+  'yiisoft/yii2-authclient' => 
+  array (
+    'name' => 'yiisoft/yii2-authclient',
+    'version' => '2.2.7.0',
+    'alias' => 
+    array (
+      '@yii/authclient' => $vendorDir . '/yiisoft/yii2-authclient/src',
+    ),
+  ),
 );

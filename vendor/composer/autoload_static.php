@@ -89,6 +89,7 @@ class ComposerStaticInite75127aa9cb36c4caa7c6aa06916e95c
             'yii\\debug\\' => 10,
             'yii\\composer\\' => 13,
             'yii\\bootstrap\\' => 14,
+            'yii\\authclient\\' => 15,
             'yii\\' => 4,
         ),
         'v' => 
@@ -281,6 +282,10 @@ class ComposerStaticInite75127aa9cb36c4caa7c6aa06916e95c
         'yii\\bootstrap\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-bootstrap/src',
+        ),
+        'yii\\authclient\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-authclient/src',
         ),
         'yii\\' => 
         array (

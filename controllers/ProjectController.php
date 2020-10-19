@@ -133,4 +133,10 @@ class ProjectController extends \app\components\mgcms\MgCmsController
 
         return $this->render('view', ['model' => $project]);
     }
+
+    public function actionBuyTest()
+    {
+
+        return $this->render('buyTest');
+    }
 }

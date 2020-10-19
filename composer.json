@@ -28,8 +28,9 @@
     "kartik-v/yii2-password": "@dev",
     "tajawal/lodash-php": "*",
     "rvkulikov/yii2-getresponse": "*",
-    "bower-asset/lightbox2": "*"
-},
+    "bower-asset/lightbox2": "*",
+    "yiisoft/yii2-authclient": "2.2.7"
+  },
   "require-dev": {
     "yiisoft/yii2-debug": "~2.0.0",
     "yiisoft/yii2-gii": "~2.0.0",

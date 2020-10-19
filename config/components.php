@@ -91,6 +91,21 @@ $arr = [
         'siteKey' => '6LcCfnMUAAAAAK49iLvZsS3l8U84d1dgYhzAylqw',
         'secret' => '6LcCfnMUAAAAADjB424a0TuxZKDgobV38I_Q6xHV',
     ],
+    'authClientCollection' => [
+        'class' => 'yii\authclient\Collection',
+        'clients' => [
+            'google' => [
+                'class' => 'yii\authclient\clients\Google',
+                'clientId' =>'167967777518-nifdgpfeos5g12diu9ntc6i1g5gp8j0c.apps.googleusercontent.com',
+                'clientSecret' => 'VCnbwo6MIGdeRsRkMe-JdUc0'
+            ],
+            'facebook' => [
+                'class' => 'yii\authclient\clients\Facebook',
+                'clientId' => 'facebook_client_id',
+                'clientSecret' => 'facebook_client_secret',
+            ],
+        ],
+    ]
 ];
 
 return $arr;

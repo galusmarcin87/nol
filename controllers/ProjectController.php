@@ -3,7 +3,9 @@
 namespace app\controllers;
 
 use Yii;
+use yii\console\widgets\Table;
 use yii\helpers\Json;
+use yii\log\Logger;
 use yii\web\Controller;
 use app\models\mgcms\db\Project;
 use yii\data\ActiveDataProvider;
@@ -11,6 +13,7 @@ use yii\helpers\Url;
 use \app\components\mgcms\MgHelpers;
 use app\models\mgcms\db\Payment;
 use __;
+use yii\web\Session;
 
 class ProjectController extends \app\components\mgcms\MgCmsController
 {
@@ -42,15 +45,55 @@ class ProjectController extends \app\components\mgcms\MgCmsController
         return $this->render('view', ['model' => $model]);
     }
 
-    public function actionBuy($id)
+    public function actionBuy()
     {
-        $model = Project::find()->where(['id' => $id])->one();
-        if (!$model) {
-            throw new \yii\web\HttpException(404, Yii::t('app', 'Not found'));
+
+        if (!MgHelpers::getUserModel()) {
+            MgHelpers::setFlashError(Yii::t('db', 'You must to be logged in'));
+            return $this->redirect(['site/login']);
         }
 
 
-        return $this->render('buy', ['model' => $model]);
+        $project = Project::find()
+            ->where(['status' => Project::STATUS_ACTIVE])
+            ->one();
+
+
+        if (Yii::$app->request->post('tokensToInvest')) {
+            $tokensToInvest = str_replace(',', '.', Yii::$app->request->post('tokensToInvest'));
+            if (!is_numeric($tokensToInvest)) {
+                MgHelpers::setFlashError(Yii::t('db', 'Invalid value'));
+                return $this->render('buy', []);
+            }
+
+            $payment = new Payment();
+            $payment->amount = $tokensToInvest * MgHelpers::getSetting('token rate', false, 2);
+            $payment->user_id = $this->getUserModel()->id;
+            $payment->status = Payment::STATUS_NEW;
+            $payment->project_id = $project->id;
+            $payment->percentage = rand(1000, 10000); //sessionId
+            $payment->user_token = 'aaa';
+            $payment->save();
+            $toHash = (int)$payment->percentage . number_format($payment->amount, 2) . $payment->id . MgHelpers::getConfigParam('tokeneoShopId') . MgHelpers::getConfigParam('tokeneoToken');
+            $payment->user_token = hash('sha256', $toHash);
+            $payment->save();
+
+
+            return $this->render('buyTokeneo', ['payment' => $payment]);
+
+        }
+
+
+        return $this->render('buy', []);
+    }
+
+    public function actionNotify()
+    {
+        \Yii::info("hi there", 'own');
+        \Yii::info("req:" . serialize(Yii::$app->request), 'own');
+        if (Yii::$app->request->post('signature')) {
+            \Yii::info("signature", 'own');
+        }
     }
 
     public function actionBuyThankYou($hash)

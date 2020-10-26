@@ -14,7 +14,7 @@ $this->title = Yii::t('db', 'Log in');
 $this->params['breadcrumbs'][] = $this->title;
 $fieldConfig = \app\components\ProjectHelper::getFormFieldConfig(false)
 
-
+//https://yii2-framework.readthedocs.io/en/stable/guide/security-auth-clients/
 ?>
 
 

@@ -1,17 +1,20 @@
 <?php
 
 /* @var $this yii\web\View */
-
+/* @var $payment \app\models\mgcms\db\Payment*/
 use app\components\mgcms\MgHelpers;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\web\View;
 
-$sessionId = 100;
-$amount = 2;
-$orderId = 2;
-$shopId = 22;
-$signature = hash('sha256', $sessionId . $amount . $orderId . $shopId . MgHelpers::getConfigParam('tokeneoToken'));
+$sessionId = (int)$payment->percentage;
+$amount = number_format($payment->amount,2);
+$orderId = $payment->id;
+echo '<pre>';
+echo var_dump($payment->id);
+echo '</pre>';
+$shopId = MgHelpers::getConfigParam('tokeneoShopId');
+$signature = $payment->user_token;
 
 
 ?>
@@ -20,7 +23,7 @@ $signature = hash('sha256', $sessionId . $amount . $orderId . $shopId . MgHelper
 
 
     <form method="post" id="tokeneo-payment-form"
-          action="https://sandbox.pay.tokeneo.com/v1/order">
+          action="<?=MgHelpers::getConfigParam('tokeneoEndpointUrl')?>">
         <input type="hidden" name="session_id" value="<?= $sessionId ?>">
         <input type="hidden" name="amount" value="<?= $amount ?>">
         <input type="hidden" name="currency" value="PLN">
@@ -39,6 +42,12 @@ $signature = hash('sha256', $sessionId . $amount . $orderId . $shopId . MgHelper
         <input type="hidden" name="shop_id" value="<?= $shopId ?>">
         <input type="hidden" name="signature" value="<?= $signature ?>">
         <input type="hidden" name="return_url" value="/">
-        <button type="submit" value="Kup">
+        <button type="submit" value="" id="">
     </form>
 </div>
+
+<script>
+    $( document ).ready(function() {
+        //$('#tokeneo-payment-form').submit();
+    });
+</script>

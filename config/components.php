@@ -29,6 +29,14 @@ $arr = [
                 'class' => 'yii\log\FileTarget',
                 'levels' => ['error', 'warning'],
             ],
+            [
+                'class' => 'yii\log\FileTarget',
+                'logVars' => [],
+                'categories' => ['own'],
+                'exportInterval' => 1,
+                'logFile' => '@app/runtime/logs/my.log',
+
+            ],
         ],
     ],
     'db' => $db,
@@ -64,9 +72,9 @@ $arr = [
         ],
     ],
     'assetsAutoCompress' =>
-    [
-        'class' => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
-    ],
+        [
+            'class' => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
+        ],
     'assetsAutoCompress' => require __DIR__ . '/inc/assetsAutoCompress.php',
     'i18n' => [
         'class' => vintage\i18n\components\I18N::className(),
@@ -96,7 +104,7 @@ $arr = [
         'clients' => [
             'google' => [
                 'class' => 'yii\authclient\clients\Google',
-                'clientId' =>'167967777518-nifdgpfeos5g12diu9ntc6i1g5gp8j0c.apps.googleusercontent.com',
+                'clientId' => '167967777518-nifdgpfeos5g12diu9ntc6i1g5gp8j0c.apps.googleusercontent.com',
                 'clientSecret' => 'VCnbwo6MIGdeRsRkMe-JdUc0'
             ],
             'facebook' => [

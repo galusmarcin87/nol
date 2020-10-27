@@ -33,12 +33,14 @@ class Payment extends \app\models\mgcms\db\AbstractRecord
     const STATUS_AFTER_PAYMENT = 1;
     const STATUS_PAYMENT_CONFIRMED = 2;
     const STATUS_PAYMENT_REALISATION = 3;
+    const STATUS_UNKNOWN = 5;
     const STATUSES = [
         self::STATUS_NEW => 'Nowy',
         self::STATUS_SUSPENDED => 'Zawieszono',
         self::STATUS_AFTER_PAYMENT => 'Deklaracja inwestycji',
-        self::STATUS_PAYMENT_CONFIRMED => 'Inwestycja',
+        self::STATUS_PAYMENT_CONFIRMED => 'Potwierdzone',
         self::STATUS_PAYMENT_REALISATION => 'Realizacja zysku',
+        self::STATUS_UNKNOWN => 'Nieznany',
     ];
 
     public $amountInDollars;

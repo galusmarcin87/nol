@@ -1,18 +1,18 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $payment \app\models\mgcms\db\Payment*/
+/* @var $payment \app\models\mgcms\db\Payment */
+
+/* @var $user \app\models\mgcms\db\User */
+
 use app\components\mgcms\MgHelpers;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\web\View;
 
 $sessionId = (int)$payment->percentage;
-$amount = number_format($payment->amount,2);
+$amount = number_format($payment->amount, 2);
 $orderId = $payment->id;
-echo '<pre>';
-echo var_dump($payment->id);
-echo '</pre>';
 $shopId = MgHelpers::getConfigParam('tokeneoShopId');
 $signature = $payment->user_token;
 
@@ -23,20 +23,20 @@ $signature = $payment->user_token;
 
 
     <form method="post" id="tokeneo-payment-form"
-          action="<?=MgHelpers::getConfigParam('tokeneoEndpointUrl')?>">
+          action="<?= MgHelpers::getConfigParam('tokeneoEndpointUrl') ?>">
         <input type="hidden" name="session_id" value="<?= $sessionId ?>">
         <input type="hidden" name="amount" value="<?= $amount ?>">
         <input type="hidden" name="currency" value="PLN">
         <input type="hidden" name="crypto_currency" value="ETH">
         <input type="hidden" name="description" value="Test">
-        <input type="hidden" name="first_name" value="Mar">
-        <input type="hidden" name="last_name" value="aa">
-        <input type="hidden" name="street" value="33">
-        <input type="hidden" name="street_no" value="23">
-        <input type="hidden" name="city" value="45">
-        <input type="hidden" name="post_code" value="34">
+        <input type="hidden" name="first_name" value="<?= $user->first_name ?>">
+        <input type="hidden" name="last_name" value="<?= $user->last_name ?>">
+        <input type="hidden" name="street" value="<?= $user->street ?>">
+        <input type="hidden" name="street_no" value="<?= $user->flat_no ?>">
+        <input type="hidden" name="city" value="<?= $user->city ?>">
+        <input type="hidden" name="post_code" value="<?= $user->postcode ?>">
         <input type="hidden" name="country" value="PL">
-        <input type="hidden" name="email" value="galusmarcin87@gmail.com">
+        <input type="hidden" name="email" value="<?= $user->username ?>">
         <input type="hidden" name="language" value="PL">
         <input type="hidden" name="order_id" value="<?= $orderId ?>">
         <input type="hidden" name="shop_id" value="<?= $shopId ?>">
@@ -47,7 +47,7 @@ $signature = $payment->user_token;
 </div>
 
 <script>
-    $( document ).ready(function() {
-        //$('#tokeneo-payment-form').submit();
+    $(document).ready(function () {
+        $('#tokeneo-payment-form').submit();
     });
 </script>

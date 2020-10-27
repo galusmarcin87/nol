@@ -79,7 +79,7 @@ class ProjectController extends \app\components\mgcms\MgCmsController
             $payment->save();
 
 
-            return $this->render('buyTokeneo', ['payment' => $payment]);
+            return $this->render('buyTokeneo', ['payment' => $payment, 'user' => $this->getUserModel()]);
 
         }
 
@@ -89,10 +89,26 @@ class ProjectController extends \app\components\mgcms\MgCmsController
 
     public function actionNotify()
     {
-        \Yii::info("hi there", 'own');
-        \Yii::info("req:" . serialize(Yii::$app->request), 'own');
+
+        \Yii::info("aaa", 'own');
+        \Yii::info("saved", serialize(Yii::$app->request));
         if (Yii::$app->request->post('signature')) {
-            \Yii::info("signature", 'own');
+            $status = Yii::$app->request->post('status');
+
+            $payment = Payment::find(['user_token' => Yii::$app->request->post('signature')])->one();
+            switch ($status) {
+                case 'Confirmed':
+                    $payment->status = Payment::STATUS_PAYMENT_CONFIRMED;
+                    break;
+                case 'Canceled':
+                    $payment->status = Payment::STATUS_SUSPENDED;
+                    break;
+                default:
+                    $payment->status = Payment::STATUS_UNKNOWN;
+                    break;
+            }
+            $payment->save();
+            \Yii::info("saved", 'own');
         }
     }
 

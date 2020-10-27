@@ -7,131 +7,105 @@ use yii\bootstrap\ActiveForm;
 use app\components\mgcms\MgHelpers;
 use yii\bootstrap\Tabs;
 
-$fieldConfig = [
-    'options' => [
-        'class' => "input input--hoshi",
-    ],
-    'template' => "{input}\n{beginLabel}<span class=\"input__label-content input__label-content--hoshi\">{labelTitle}</span>{endLabel}\n{error}",
-    'inputOptions' => ['class' => 'input__field input__field--hoshi'],
-    'labelOptions' => [
-        'class' => "input__label input__label--hoshi input__label--hoshi-color-2",
-    ],
-    'wrapperOptions' => [
-        'class' => "input input--hoshi",
-    ]
-];
 
 ?>
 <?php
 $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'class' => 'fadeInUpShort animated delay-250',
-        'fieldConfig' => $fieldConfig
-    ]);
+    'id' => 'login-form',
 
+    'fieldConfig' => \app\components\ProjectHelper::getFormFieldConfig(false),
+    'options' => ['enctype' => 'multipart/form-data', 'class' => 'User-Panel__form Contact-form animatedParent',]
+]);
+
+//          echo $form->errorSummary($model);
 ?>
+    <div class="fadeIn animated">
 
-<?= $form->errorSummary($model); ?>
+        <div class="User-Panel__form-group">
+            <?= $form->field($model, 'first_name')->textInput(['placeholder' => ' ']) ?>
+            <?= $form->field($model, 'last_name')->textInput(['placeholder' => ' ']) ?>
+        </div>
+        <div class="User-Panel__form-group">
+            <?= $form->field($model, 'country')->textInput(['placeholder' => ' ']) ?>
+            <?= $form->field($model, 'voivodeship')->textInput(['placeholder' => ' ']) ?>
+        </div>
+        <div class="User-Panel__form-group">
+            <?= $form->field($model, 'postcode')->textInput(['placeholder' => ' ']) ?>
+            <?= $form->field($model, 'city')->textInput(['placeholder' => ' ']) ?>
+        </div>
+        <div class="User-Panel__form-group">
+            <?= $form->field($model, 'street')->textInput(['placeholder' => ' ']) ?>
+            <?= $form->field($model, 'flat_no')->textInput(['placeholder' => ' ']) ?>
+        </div>
+        <br/><br/>
+        <div class="User-Panel__form-group">
+            <?= $form->field($model, 'citizenship')->textInput(['placeholder' => ' ']) ?>
+            <?= $form->field($model, 'id_document_type')->textInput(['placeholder' => ' ']) ?>
+        </div>
+        <div class="User-Panel__form-group">
+            <?= $form->field($model, 'id_document_no')->textInput(['placeholder' => ' ']) ?>
+            <?= $form->field($model, 'pesel')->textInput(['placeholder' => ' ']) ?>
+        </div>
+        <div class="Form__group form-group text-left checkbox">
+            <?= $form->field($model, 'acceptTerms')->checkbox() ?>
+        </div>
+        <input
+                class="btn btn-primary"
+                type="submit"
+                value="<?= Yii::t('db', 'SAVE CHANGES'); ?>"
+        />
 
-<p>&nbsp;</p>
-<div class="col">
-  <input type="hidden" name="User[is_company]" value="0">
-  <input name="User[is_company]" type="checkbox" id="isCompany" <?if($model->is_company):?>checked="checked"<?endif?> value="1">
-  <label class="small-checkbox" for="isCompany">
-    <?= $model->getAttributeLabel('is_company') ?>
-  </label>
-</div>
+    </div>
+    <div class="fadeIn animated">
+        <div class="User-Panel_profile"  style="display: none">
+            <label class="User-Panel__label">
+                <?= Yii::t('db', 'YOUR PROFILE PHOTO'); ?>
+            </label>
+            <div class="text-center User-Panel__block">
+                <? if (!$model->file_id): ?>
+                    <img src="/images/avatar_03.jpg" alt=""/>
+                <? else: ?>
+                    <img src="<?= $model->file->getImageSrc(160, 160) ?>" alt=""/>
+                <? endif; ?>
+                <div class="User-Panel__block__action">
+                    <?= \kartik\widgets\FileInput::widget([
+                        'name' => 'User[file_id]',
+                        'pluginOptions' => [
+                            'showCaption' => false,
+                            'showRemove' => false,
+                            'showUpload' => false,
+                            'showPreview' => false,
 
-<div class="company" <? if (!$model->is_company): ?>style="display:none"<? endif ?>>
-  <div>
-    <?= $form->field($model, 'company_name')->textInput() ?>
-  </div>
+                            'browseClass' => 'btn btn-success',
+//                                    'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
+                            'browseLabel' => Yii::t('db', 'SELECT PHOTO')
+                        ],
+                        'options' => ['accept' => 'image/*']
+                    ]);
+                    ?>
+                    <a href="<?= \yii\helpers\Url::to(['site/remove-photo']) ?>" class="btn btn-primary">
+                        <?= Yii::t('db', 'REMOVE PHOTO'); ?>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="User-Panel_password">
 
-  <div>
-    <?= $form->field($model, 'company_id')->textInput() ?>
-  </div>
-
-</div>
-
-
-<div>
-  <?= $form->field($model, 'first_name')->textInput() ?>
-</div>
-
-<div>
-  <?= $form->field($model, 'last_name')->textInput() ?>
-</div>
-
-<div>
-  <?= $form->field($model, 'citizenship')->textInput() ?>
-</div>
-
-<div>
-  <?= $form->field($model, 'pesel')->textInput() ?>
-</div>
-
-<div>
-  <?=
-  $form->field($model, 'birthdate')->textInput();
-
-  ?>
-</div>
-
-<div>
-  <?= $form->field($model, 'birth_country')->textInput() ?>
-</div>
-
-<div>
-  <?= $form->field($model, 'document_type')->textInput() ?>
-</div>
-
-<div>
-  <?= $form->field($model, 'street')->textInput() ?>
-</div>
-
-<div>
-  <?= $form->field($model, 'house_no')->textInput() ?>
-</div>
-
-
-<div>
-  <?= $form->field($model, 'flat_no')->textInput() ?>
-</div>
-
-
-<div>
-  <?= $form->field($model, 'postcode')->textInput() ?>
-</div>
-
-
-<div>
-  <?= $form->field($model, 'city')->textInput() ?>
-</div>
-
-
-<div>
-  <?= $form->field($model, 'email')->textInput(['type'=>'email']) ?>
-</div>
-
-
-<div>
-  <?= $form->field($model, 'phone')->textInput() ?>
-</div>
-
-
-
-
-
-<div class="text-center"><button type="submit" class="btn btn-black" href="#"><?= Yii::t('db', 'Save'); ?><span></span></button></div>
-
+            <label class="User-Panel__label">
+                <?= Yii::t('db', 'SET UP NEW PASSWORD'); ?>
+            </label>
+            <div class="text-center User-Panel__block">
+                <? $fieldClass = 'text-left User-Panel__form-group User-Panel__form-group--block' ?>
+                <?= $form->field($model, 'oldPassword', ['options' => ['class' => $fieldClass]])->passwordInput(['placeholder' => ' ']) ?>
+                <?= $form->field($model, 'password', ['options' => ['class' => $fieldClass]])->passwordInput(['placeholder' => ' ', 'value' => ''])->label(Yii::t('db','New password')) ?>
+                <?= $form->field($model, 'passwordRepeat', ['options' => ['class' => $fieldClass]])->passwordInput(['placeholder' => ' ']) ?>
+                <input
+                        type="submit"
+                        class="btn btn-primary"
+                        name="passwordChanging"
+                        value="<?= Yii::t('db', 'SAVE CHANGES'); ?>"
+                />
+            </div>
+        </div>
+    </div>
 <?php ActiveForm::end(); ?>
-
-<script type="text/javascript">
-  $('#isCompany').change(function(){
-    if($(this).is(':checked')){
-      $('.company').show();
-    }else{
-      $('.company').hide();
-    }
-  });
-</script>

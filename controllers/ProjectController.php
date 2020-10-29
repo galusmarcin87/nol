@@ -87,9 +87,16 @@ class ProjectController extends \app\components\mgcms\MgCmsController
         return $this->render('buy', []);
     }
 
+    public function beforeAction($action)
+    {
+        if ($action->id == 'notify') {
+            $this->enableCsrfValidation = false;
+        }
+        return true;
+    }
+
     public function actionNotify()
     {
-
         \Yii::info("aaa", 'own');
         \Yii::info("saved", serialize(Yii::$app->request));
         if (Yii::$app->request->post('signature')) {
@@ -109,6 +116,8 @@ class ProjectController extends \app\components\mgcms\MgCmsController
             }
             $payment->save();
             \Yii::info("saved", 'own');
+
+            echo 'OK';
         }
     }
 

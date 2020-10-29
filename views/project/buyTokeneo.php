@@ -36,7 +36,7 @@ $signature = $payment->user_token;
         <input type="hidden" name="city" value="<?= $user->city ?>">
         <input type="hidden" name="post_code" value="<?= $user->postcode ?>">
         <input type="hidden" name="country" value="PL">
-        <input type="hidden" name="email" value="<?= $user->username ?>">
+        <input type="hidden" name="email" value="galusmarcin87@gmail.com">
         <input type="hidden" name="language" value="PL">
         <input type="hidden" name="order_id" value="<?= $orderId ?>">
         <input type="hidden" name="shop_id" value="<?= $shopId ?>">

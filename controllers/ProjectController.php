@@ -98,12 +98,9 @@ class ProjectController extends \app\components\mgcms\MgCmsController
     public function actionNotify()
     {
         \Yii::info("aaa", 'own');
-        \Yii::info("saved", serialize(Yii::$app->request));
         if (Yii::$app->request->post('signature')) {
             $status = Yii::$app->request->post('status');
-
-
-            $payment = Payment::find(['user_token' => Yii::$app->request->post('signature')])->one();
+            $payment = Payment::find()->where(['user_token' => Yii::$app->request->post('signature')])->one();
             switch ($status) {
                 case 'Confirmed':
                     $payment->status = Payment::STATUS_PAYMENT_CONFIRMED;

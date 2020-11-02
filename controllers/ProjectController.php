@@ -101,6 +101,10 @@ class ProjectController extends \app\components\mgcms\MgCmsController
         if (Yii::$app->request->post('signature')) {
             $status = Yii::$app->request->post('status');
             $payment = Payment::find()->where(['user_token' => Yii::$app->request->post('signature')])->one();
+            if(!$payment){
+                \Yii::info('No payment found for signature ' . Yii::$app->request->post('signature'), 'own');
+                return 'error';
+            }
             switch ($status) {
                 case 'Confirmed':
                     $payment->status = Payment::STATUS_PAYMENT_CONFIRMED;
@@ -118,7 +122,7 @@ class ProjectController extends \app\components\mgcms\MgCmsController
             \Yii::info($status, 'own');
             \Yii::info('saved ' . $saved, 'own');
 
-            echo 'OK';
+            return 'OK';
         }
     }
 

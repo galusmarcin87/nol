@@ -78,6 +78,8 @@ class ProjectController extends \app\components\mgcms\MgCmsController
             $payment->user_token = hash('sha256', $toHash);
             $payment->save();
 
+
+
             \Yii::info('signature generated' .  $payment->user_token, 'own');
 
 
@@ -110,6 +112,12 @@ class ProjectController extends \app\components\mgcms\MgCmsController
             switch ($status) {
                 case 'Confirmed':
                     $payment->status = Payment::STATUS_PAYMENT_CONFIRMED;
+                    $project = Project::find()
+                        ->where(['status' => Project::STATUS_ACTIVE])
+                        ->one();
+                    $project->money += $payment->amount;
+                    $project->save();
+
                     break;
                 case 'Canceled':
                     $payment->status = Payment::STATUS_SUSPENDED;
@@ -119,6 +127,11 @@ class ProjectController extends \app\components\mgcms\MgCmsController
                     break;
             }
             $saved = $payment->save();
+
+
+
+
+
             \Yii::info('signature ' . Yii::$app->request->post('signature'), 'own');
             \Yii::info(serialize($payment), 'own');
             \Yii::info($status, 'own');

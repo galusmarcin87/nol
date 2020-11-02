@@ -102,6 +102,7 @@ class ProjectController extends \app\components\mgcms\MgCmsController
         if (Yii::$app->request->post('signature')) {
             $status = Yii::$app->request->post('status');
 
+
             $payment = Payment::find(['user_token' => Yii::$app->request->post('signature')])->one();
             switch ($status) {
                 case 'Confirmed':
@@ -115,9 +116,10 @@ class ProjectController extends \app\components\mgcms\MgCmsController
                     break;
             }
             $saved = $payment->save();
+            \Yii::info('signature ' . Yii::$app->request->post('signature'), 'own');
+            \Yii::info(serialize($payment), 'own');
             \Yii::info($status, 'own');
             \Yii::info('saved ' . $saved, 'own');
-            \Yii::info("saved", 'own');
 
             echo 'OK';
         }

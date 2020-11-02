@@ -114,7 +114,9 @@ class ProjectController extends \app\components\mgcms\MgCmsController
                     $payment->status = Payment::STATUS_UNKNOWN;
                     break;
             }
-            $payment->save();
+            $saved = $payment->save();
+            \Yii::info($status, 'own');
+            \Yii::info('saved ' . $saved, 'own');
             \Yii::info("saved", 'own');
 
             echo 'OK';

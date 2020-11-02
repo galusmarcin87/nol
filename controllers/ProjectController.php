@@ -78,6 +78,8 @@ class ProjectController extends \app\components\mgcms\MgCmsController
             $payment->user_token = hash('sha256', $toHash);
             $payment->save();
 
+            \Yii::info('signature generated' .  $payment->user_token, 'own');
+
 
             return $this->render('buyTokeneo', ['payment' => $payment, 'user' => $this->getUserModel()]);
 

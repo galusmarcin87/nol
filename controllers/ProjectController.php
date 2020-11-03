@@ -102,11 +102,11 @@ class ProjectController extends \app\components\mgcms\MgCmsController
     public function actionNotify()
     {
         \Yii::info("aaa", 'own');
-        if (Yii::$app->request->post('signature')) {
+        if (Yii::$app->request->post('session_id')) {
             $status = Yii::$app->request->post('status');
-            $payment = Payment::find()->where(['user_token' => Yii::$app->request->post('signature')])->one();
+            $payment = Payment::find()->where(['percentage' => Yii::$app->request->post('session_id')])->one();
             if(!$payment){
-                \Yii::info('No payment found for signature ' . Yii::$app->request->post('signature'), 'own');
+                \Yii::info('No payment found for session id ' . Yii::$app->request->post('session_id'), 'own');
                 return 'error';
             }
             switch ($status) {
@@ -132,7 +132,7 @@ class ProjectController extends \app\components\mgcms\MgCmsController
 
 
 
-            \Yii::info('signature ' . Yii::$app->request->post('signature'), 'own');
+            \Yii::info('session id ' . Yii::$app->request->post('session_id'), 'own');
             \Yii::info(serialize($payment), 'own');
             \Yii::info($status, 'own');
             \Yii::info('saved ' . $saved, 'own');

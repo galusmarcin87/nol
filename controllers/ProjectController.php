@@ -102,7 +102,7 @@ class ProjectController extends \app\components\mgcms\MgCmsController
     public function actionNotify()
     {
         \Yii::info("notify", 'own');
-        if (Yii::$app->request->post('session_id') && Yii::$app->request->remoteIP == MgHelpers::getConfigParam('tokeneoShopId')) {
+        if (Yii::$app->request->post('session_id') && Yii::$app->request->remoteIP == MgHelpers::getConfigParam('tokeneoIp')) {
             $status = Yii::$app->request->post('status');
             $payment = Payment::find()->where(['percentage' => Yii::$app->request->post('session_id')])->one();
             if(!$payment){

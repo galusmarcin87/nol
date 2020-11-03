@@ -131,7 +131,7 @@ class ProjectController extends \app\components\mgcms\MgCmsController
 
 
 
-
+            \Yii::info('IP ' . Yii::$app->request->remoteIP, 'own');
             \Yii::info('session id ' . Yii::$app->request->post('session_id'), 'own');
             \Yii::info(serialize($payment), 'own');
             \Yii::info($status, 'own');

@@ -101,8 +101,8 @@ class ProjectController extends \app\components\mgcms\MgCmsController
 
     public function actionNotify()
     {
-        \Yii::info("aaa", 'own');
-        if (Yii::$app->request->post('session_id')) {
+        \Yii::info("notify", 'own');
+        if (Yii::$app->request->post('session_id') && Yii::$app->request->remoteIP == MgHelpers::getConfigParam('tokeneoShopId')) {
             $status = Yii::$app->request->post('status');
             $payment = Payment::find()->where(['percentage' => Yii::$app->request->post('session_id')])->one();
             if(!$payment){
@@ -128,16 +128,13 @@ class ProjectController extends \app\components\mgcms\MgCmsController
             }
             $saved = $payment->save();
 
-
-
-
-            \Yii::info('IP ' . Yii::$app->request->remoteIP, 'own');
             \Yii::info('session id ' . Yii::$app->request->post('session_id'), 'own');
-            \Yii::info(serialize($payment), 'own');
             \Yii::info($status, 'own');
             \Yii::info('saved ' . $saved, 'own');
 
             return 'OK';
+        }else{
+            \Yii::info('Wrong IP '.Yii::$app->request->remoteIP, 'own');
         }
     }
 

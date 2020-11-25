@@ -39,7 +39,7 @@ $menu = new NobleMenu(['name' => 'header_' . Yii::$app->language, 'loginLink' =>
 
             </ul>
             <div class="Menu-top__action-block">
-                <a href="#" class="Menu-top__btn btn btn-primary"><?= Yii::t('db', 'Buy tokens'); ?></a>
+                <a href="<?= MgHelpers::getSetting('header buy tokens url') ?>" class="Menu-top__btn btn btn-primary"><?= Yii::t('db', 'Buy tokens'); ?></a>
                 <div class="btn__rounded">
                     <img class="Menu-top__svg" src="/svg/login.svg" alt="" />
                     <i

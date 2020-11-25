@@ -68,13 +68,14 @@ class ProjectController extends \app\components\mgcms\MgCmsController
 
             $payment = new Payment();
             $payment->amount = $tokensToInvest * MgHelpers::getSetting('token rate', false, 2);
+
             $payment->user_id = $this->getUserModel()->id;
             $payment->status = Payment::STATUS_NEW;
             $payment->project_id = $project->id;
             $payment->percentage = rand(1000, 10000); //sessionId
             $payment->user_token = 'aaa';
             $payment->save();
-            $toHash = (int)$payment->percentage . number_format($payment->amount, 2) . $payment->id . MgHelpers::getConfigParam('tokeneoShopId') . MgHelpers::getConfigParam('tokeneoToken');
+            $toHash = (int)$payment->percentage . number_format($payment->amount, 2,'.','') . $payment->id . MgHelpers::getConfigParam('tokeneoShopId') . MgHelpers::getConfigParam('tokeneoToken');
             $payment->user_token = hash('sha256', $toHash);
             $payment->save();
             

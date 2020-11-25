@@ -11,7 +11,7 @@ use yii\bootstrap\ActiveForm;
 use yii\web\View;
 
 $sessionId = (int)$payment->percentage;
-$amount = number_format($payment->amount, 2);
+$amount = number_format($payment->amount, 2 ,'.','');
 $orderId = $payment->id;
 $shopId = MgHelpers::getConfigParam('tokeneoShopId');
 $signature = $payment->user_token;

@@ -57,21 +57,21 @@ $this->params['breadcrumbs'][] = $this->title;
     $gridColumn = [
         ['attribute' => 'id', 'visible' => false],
         'created_on',
-        [
-            'attribute' => 'project.name',
-            'label' => Yii::t('app', 'Project'),
-        ],
+//        [
+//            'attribute' => 'project.name',
+//            'label' => Yii::t('app', 'Project'),
+//        ],
         [
             'attribute' => 'user.username',
             'label' => Yii::t('app', 'User'),
         ],
         'amount',
         'statusStr',
-        'percentage',
-        'is_preico:boolean',
-        'user_token',
-        'ethereum_buy_date',
-        'market',
+//        'percentage',
+//        'is_preico:boolean',
+//        'user_token',
+//        'ethereum_buy_date',
+//        'market',
         'comments',
     ];
     echo DetailView::widget([

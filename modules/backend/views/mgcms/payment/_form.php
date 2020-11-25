@@ -48,18 +48,17 @@ use app\components\mgcms\MgHelpers;
 
         <?= $form->field6md($model, 'status')->dropDownList(app\models\mgcms\db\Payment::STATUSES) ?>
 
+        <div class="hidden">
         <?= $form->field6md($model, 'percentage')->textInput(['placeholder' => $model->getAttributeLabel('percentage')]) ?>
 
         <?= $form->field6md($model, 'is_preico')->switchInput() ?>
 
         <?= $form->field12md($model, 'user_token')->textInput(['maxlength' => true, 'placeholder' => $model->getAttributeLabel('user_token')]) ?>
         
-        <?= $form->field6md($model, 'ethereum_buy_date')->datePicker() ?>
-
-        <?= $form->field6md($model, 'market')->textInput() ?>
       
       <?= $form->field12md($model, 'comments')->textarea() ?>
 
+        </div>
 
     </div>
     <div class="form-group">

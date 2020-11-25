@@ -53,6 +53,12 @@ class ProjectController extends \app\components\mgcms\MgCmsController
             return $this->redirect(['site/login']);
         }
 
+        $user = MgHelpers::getUserModel();
+        if(1 || !$user->first_name || !$user->last_name || !$user->street || !$user->flat_no || !$user->postcode || !$user->city){
+            MgHelpers::setFlash(MgHelpers::FLASH_TYPE_WARNING, Yii::t('db', 'Fill your account data please first'));
+            return $this->redirect(['site/account']);
+        }
+
 
         $project = Project::find()
             ->where(['status' => Project::STATUS_ACTIVE])

@@ -1,13 +1,13 @@
 <?
 /* @var $this yii\web\View */
+/* @var $project app\models\mgcms\db\Project */
 
 use app\components\mgcms\MgHelpers;
 use app\models\mgcms\db\Project;
 use yii\bootstrap\ActiveForm;
 use yii\web\View;
 
-
-
+$project->language = Yii::$app->language;
 $index=0;
 
 ?>

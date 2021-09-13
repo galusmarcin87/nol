@@ -25,7 +25,7 @@ class FrontAsset extends AssetBundle
         'css/font-awesome.min.css',
         'css/owl.carousel.min.css',
         'css/animations.css',
-        'scss/style.scss',
+        'css/style.min.css',
         'css/magnific-popup.min.css',
         'less/front.less',
         'fonts/stylesheet.css',

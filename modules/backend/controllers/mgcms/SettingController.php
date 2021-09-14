@@ -38,13 +38,13 @@ class SettingController extends MgBackendController
     $searchModel->type = 'system';
     $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
     $this->initEditableBehavior('app\models\mgcms\db\Setting');
-    
+
     return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
     ]);
   }
-  
+
   /**
    * Lists all Setting models.
    * @return mixed
@@ -55,7 +55,7 @@ class SettingController extends MgBackendController
     $searchModel->type = 'text';
     $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
     $this->initEditableBehavior('app\models\mgcms\db\Setting');
-    
+
     return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -146,11 +146,11 @@ class SettingController extends MgBackendController
 
   public function actionClearCache()
   {
-    FileHelper::removeDirectory(Yii::getAlias('@webroot') . '/assets');
-    FileHelper::createDirectory(Yii::getAlias('@webroot') . '/assets');
+    //FileHelper::removeDirectory(Yii::getAlias('@webroot') . '/assets');
+    //FileHelper::createDirectory(Yii::getAlias('@webroot') . '/assets');
     Yii::$app->cache->flush();
     \app\components\mgcms\MgHelpers::setFlash(\app\components\mgcms\MgHelpers::FLASH_TYPE_SUCCESS, Yii::t('app', 'Cache has been cleared'));
-    
+
     $this->back();
   }
 }

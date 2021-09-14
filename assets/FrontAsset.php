@@ -21,14 +21,14 @@ class FrontAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/bootstrap.min.css',
-        'css/font-awesome.min.css',
-        'css/owl.carousel.min.css',
-        'css/animations.css',
+        //'css/bootstrap.min.css',
+        //'css/font-awesome.min.css',
+        //'css/owl.carousel.min.css',
+        //'css/animations.css',
         'css/style.min.css',
-        'css/magnific-popup.min.css',
+        //'css/magnific-popup.min.css',
         'less/front.less',
-        'fonts/stylesheet.css',
+        //'fonts/stylesheet.css',
     ];
     public $js = [
         'js/popper.min.js',
